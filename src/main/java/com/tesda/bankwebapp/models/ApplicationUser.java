@@ -25,10 +25,20 @@ public class ApplicationUser implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
-    private Integer userId;
+    private Long userId;
 
     @Column(unique = true)
     private String username;
+
+    private String firstname;
+
+    private String lastname;
+
+    @Column(unique = true)
+    private String email;
+
+    @Column(unique = true)
+    private String mobile;
 
     private String password;
 
@@ -42,30 +52,71 @@ public class ApplicationUser implements UserDetails {
         this.authorities = new HashSet<Role>();
     }
 
-    public ApplicationUser(Integer userId, String username, String password, Set<Role> authorities) {
+    public ApplicationUser(String username, String firstname, String lastname, String email, String mobile,
+            String password, Set<Role> authorities) {
         super();
-        this.userId = userId;
         this.username = username;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.mobile = mobile;
         this.password = password;
         this.authorities = authorities;
-
     }
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return this.userId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
+    // public void setUserId(Long userId) {
+    // this.userId = userId;
+    // }
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.authorities;
+    public String getUsername() {
+        // throw new UnsupportedOperationException("Unimplemented method
+        // 'getUsername'");
+        return this.username;
     }
 
-    public void setAuthorities(Set<Role> authorities) {
-        this.authorities = authorities;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    // @Override
+    public String getFirstname() {
+        return this.firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    // @Override
+    public String getLastname() {
+        return this.lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    // @Override
+    public String getEmail() {
+        return this.email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    // @Override
+    public String getMobile() {
+        return this.mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
     @Override
@@ -81,14 +132,12 @@ public class ApplicationUser implements UserDetails {
     }
 
     @Override
-    public String getUsername() {
-        // throw new UnsupportedOperationException("Unimplemented method
-        // 'getUsername'");
-        return this.username;
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return this.authorities;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setAuthorities(Set<Role> authorities) {
+        this.authorities = authorities;
     }
 
     @Override

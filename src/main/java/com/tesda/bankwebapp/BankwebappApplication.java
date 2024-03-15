@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.tesda.bankwebapp.models.ApplicationUser;
+// import com.tesda.bankwebapp.models.ApplicationUser;
 import com.tesda.bankwebapp.models.Role;
 import com.tesda.bankwebapp.repository.RoleRepository;
 import com.tesda.bankwebapp.repository.UserRepository;
@@ -34,8 +34,9 @@ public class BankwebappApplication {
 			Set<Role> roles = new HashSet<>();
 			roles.add(adminRole);
 
-			ApplicationUser admin = new ApplicationUser(1, "admin", passwordEncoder.encode("password"), roles);
-			userRepository.save(admin);
+			// ApplicationUser admin = new ApplicationUser(1, "admin",
+			// passwordEncoder.encode("password"), roles);
+			// userRepository.save(admin);
 
 		};
 	}
